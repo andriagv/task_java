@@ -1,0 +1,229 @@
+Easy: 
+1) დაადგინეთ რიცხვი არის თუ არა მარტივი
+2) დაწერეთ პროგრამა რომელიც დაბეჭდავს რაიმე n რიცხვის (n <= 10) ფაქტორიალს!
+3) გაუცვალეთ ორ მთელ რიცხვს ადგილები (დამატებითი ცვლადით და მის გარეშე)
+4) დაბეჭდეთ 1-დან 40-მდე ყველა კენტი რიცხვი (continueს გამოყენებით და გარეშე)
+
+Medium:
+1) მოცემული გვაქვს სამი მთელი რიცხვი A, B და K. დაადგინეთ რამდენი K სიგრძის კვადრატია საჭირო, რომ მთლიანად დავფაროთ A x B ზომის მართკუთხედი (აუცილებელია მართკუთხედი მთლიანად დაიფაროს, გადაცდენა შესაძლებელია).
+2) აღწერეთ int ტიპის ცვლადი რომლის მნიშვნელობა იქნება ნებისმიერი მთელი დადებითი რიცხვი (მაგალითად n = 123, 25456, 1969420...). დაწერეთ პროგრამა რომელიც დაბეჭდავს ამ რიცხვის ციფრთა ჯამს
+3) დაწერე პროგრამა, რომელიც მიიღებს int რიცხვს input-ად იქამდე, სანამ ეს რიცხვი არ იქნება მარტივი, წინააღმდეგ შემთხვევაში კი თავიდან მოითხოვოს ინპუტის მიღება
+
+Hard:
+1) შეადგინეთ პროგრამა, რომელიც დაპრინტავს რამდენი ორნიშნა რიცხვი არსებობს, რომელიც უნაშთოდ იყოფა თავის ციფრთა ჯამზე
+2) მოცემულია ერთი არაუარყოფითი მთელი რიცხვი. კლებადობით დაპრინტეთ ორის რომელი ხარისხების ჯამად ჩაიწერება ეს რიცხვი ყოველ შემდეგ ხაზზე. (მაგ: 15 = 8 + 4 + 2 + 1)
+
+
+
+
+Easy: 
+1)
+public class Main extends MiniJava{
+    public static void main(String[] args) {
+        int x = 7;
+        boolean r = true;
+
+        if (x < 2) {
+            r = false;
+
+        }
+
+        for(int i=2;i<=x-1;i++){
+            if (x%i == 0 ){
+                r = false;
+                break;
+            }
+        }
+        System.out.println(r);
+
+    }
+}
+
+2)
+public class Main extends MiniJava{
+    public static void main(String[] args) {
+        int x = readInt();
+        int k=1;
+
+        if (x<11){
+            for(int a = x;a>1;a--){
+               k*=a;
+            }
+            System.out.println(k);
+
+        }
+
+
+
+    }
+}
+
+3)
+public class Main extends MiniJava{
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 9;
+//pirveli varianti
+        int c;
+        c=a;
+        a=b;
+        b=c;
+        write(a);
+        write(b);
+//meore varianti
+        a = 5;
+        b = 9;
+        a=a+b;
+        b=a-b;
+        a=a-b;
+        write(a);
+        write(b);
+
+    }
+}
+4)
+public class Mqiain extends MiniJava{
+    public static void main(String[] args) {
+
+//pirveli varianti
+        for(int i=1;i<40;i++){
+            if(i%2==1){
+                write(i);
+            }
+        }
+//meore varianti
+        for(int i=1;i<40;i++){
+            if(i%2==0){
+                continue;
+            }
+            write(i);
+        }
+
+    }
+}
+
+Medium:
+1)
+public class dav extends MiniJava{
+    public static void main(String[] args) {
+        int A = 3;
+        int B = 5;
+        int K = 4;
+        double i = (double)A*B/K;
+        write((int) (i+0.5));
+    }
+}
+
+2)
+public class dav extends MiniJava{
+    public static void main(String[] args) {
+
+        int x = readInt();
+        int a = 10;
+        int res = 0;
+        int b = 0;
+        while (x>0){
+            b = x%a;
+            x = (x-b)/a;
+            res=res+b;
+
+        }
+        System.out.println(res);
+
+
+    }
+}
+
+3)
+public class dav extends MiniJava{
+    public static void main(String[] args) {
+        boolean a = true;
+        int x =readInt();
+        if (x<2){
+            a = false;
+        }
+
+        for (int i = 2; i<x;i++){
+            if (x%i==0){
+                a=false;
+            }
+        }
+        System.out.println(a);
+
+        while(a==false){
+             a = true;
+             x =readInt();
+
+
+            if (x<2){
+                a = false;
+            }
+
+            for (int i = 2; i<x;i++){
+                if (x%i==0){
+                    a=false;
+                }
+            }
+
+            System.out.println(a);
+        }
+    }
+}
+
+Hard:
+1)
+public class axlal extends MiniJava{
+    public static void main(String[] args) {
+        int x = 0;
+        int a = 0;
+        int i = 10;
+
+        while(i<100){
+            int y = i%10;
+            x=0;
+            x=x+y;
+            int k = (i-y)/10;
+            x=x+k;
+
+            if (i%x==0){
+                a=a+1;
+            }
+            i++;
+        }
+        System.out.println(a);
+    }
+}
+
+2)
+int x =10;
+        int a = 2;
+
+        for ( int i=1;x!=2;i++){
+
+            while(x>a*2){
+                a=a*2;
+            }
+
+            x = x-a;
+
+            System.out.println(a);
+            System.out.println(x);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
